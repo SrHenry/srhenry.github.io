@@ -3,7 +3,6 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-    paths: [portfolio/**]
   workflow_dispatch:
 
 permissions:
@@ -27,23 +26,21 @@ jobs:
         with:
           node-version: '24'
           cache: 'npm'
-          cache-dependency-path: portfolio/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        working-directory: portfolio
         run: npm ci
 
       - name: Build static site
-        working-directory: portfolio
+        run: npm run build:static
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BUILD_TARGET: static
-        run: npm run build:static
 
       - name: Upload artifact for deployment
         uses: actions/upload-pages-artifact@v5
         with:
-          path: ./portfolio/out
+          path: ./out
 
   deploy:
     environment:
