@@ -36,6 +36,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BUILD_TARGET: static
+          NEXT_PUBLIC_GITHUB_USERNAME: ${{ vars.NEXT_PUBLIC_GITHUB_USERNAME }}
+          NEXT_PUBLIC_GITHUB_API_BASE: ${{ vars.NEXT_PUBLIC_GITHUB_API_BASE }}
+          NEXT_PUBLIC_GRAVATAR_EMAIL_HASH: ${{ vars.NEXT_PUBLIC_GRAVATAR_EMAIL_HASH }}
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
+          NEXT_PUBLIC_GITHUB_LINK: ${{ vars.NEXT_PUBLIC_GITHUB_LINK }}
+          NEXT_PUBLIC_LINKEDIN_LINK: ${{ vars.NEXT_PUBLIC_LINKEDIN_LINK }}
+          NEXT_PUBLIC_GITLAB_LINK: ${{ vars.NEXT_PUBLIC_GITLAB_LINK }}
+          NEXT_PUBLIC_EMAIL: ${{ vars.NEXT_PUBLIC_EMAIL }}
+          NEXT_PUBLIC_CACHE_TTL: ${{ vars.NEXT_PUBLIC_CACHE_TTL }}
 
       - name: Upload artifact for deployment
         uses: actions/upload-pages-artifact@v5
